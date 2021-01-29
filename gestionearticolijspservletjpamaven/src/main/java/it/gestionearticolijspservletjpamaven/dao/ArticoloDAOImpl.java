@@ -1,10 +1,9 @@
 package it.gestionearticolijspservletjpamaven.dao;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import it.gestionearticolijspservletjpamaven.model.Articolo;
 
@@ -53,13 +52,19 @@ public class ArticoloDAOImpl implements ArticoloDAO {
 
 	@Override
 	public List<Articolo> findByExample(Articolo input) throws Exception {
-		List<Articolo> listaArticoli = new ArrayList<>();
-		for (Articolo iterable_element : listaArticoli) {
-			if(entityManager.find(Articolo.class, input) != null) {
-				listaArticoli.add(iterable_element);
-			}
-		}
-		return listaArticoli;
+
+        StringBuilder stringBuilder = new StringBuilder("");
+        stringBuilder.append("select a from Articolo a where");
+        stringBuilder.append("( :codice is null OR a.codice like %:nome%) ");
+        stringBuilder.append("AND (:descrizione is null OR a.descrizione like %:descrizione%) ");
+        stringBuilder.append("AND (:prezzo is null OR a.prezzo = :prezzo) ");
+        stringBuilder.append("AND (:dataarrivo is null OR a.dataarrivo = :dataarrivo) ");
+        TypedQuery<Articolo> typedQuery = entityManager.createQuery(stringBuilder.toString(), Articolo.class);
+        typedQuery.setParameter("codice", input.getCodice());
+        typedQuery.setParameter("descrizione", input.getDescrizione());
+        typedQuery.setParameter("prezzo", input.getPrezzo());
+        typedQuery.setParameter("dataarrivo", input.getDataArrivo());
+        return typedQuery.getResultList();
 	}
 
 }
