@@ -46,7 +46,9 @@
 		        <h5>Lista dei risultati</h5> 
 		    </div>
 		    <div class='card-body'>
-		    	<a class="btn btn-primary " href="PrepareInsertArticoloServlet">Add New</a>
+		    	<a class="btn btn-primary" href="PrepareInsertArticoloServlet">Add New</a>
+		    	<a style="float:right" class="btn btn-warning" href="PrepareSearchArticoloServlet">Cerca</a>
+		    	 
 		    
 		        <div class='table-responsive'>
 		            <table class='table table-striped ' >
