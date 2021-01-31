@@ -45,7 +45,9 @@ public class ExecuteUpdateArticoloServlet extends HttpServlet {
 			articoloInstance.setCodice(codiceInputParam);
 			articoloInstance.setDescrizione(descrizioneInputParam);
 			articoloInstance.setPrezzo(prezzoParsato);
-			articoloInstance.setDataArrivo(dataArrivoParsed);
+			if(!dataArrivoStringParam.isEmpty()) {
+				articoloInstance.setDataArrivo(dataArrivoParsed);
+			}
 			MyServiceFactory.getArticoloServiceInstance().aggiorna(articoloInstance);
 			request.setAttribute("listaArticoliAttribute", MyServiceFactory.getArticoloServiceInstance().listAll());
 			request.setAttribute("successMessage", "Operazione effettuata con successo");

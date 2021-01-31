@@ -37,24 +37,25 @@
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label>Codice <span class="text-danger">*</span></label>
-								<input type="text" name="codice" id="codice" class="form-control" placeholder="Inserire il codice" value="<%=articoloInPagina.getCodice()%>" required>
+								<input type="text" name="codice" id="codice" class="form-control" placeholder="Inserire il codice" value="<%=articoloInPagina.getCodice()%>">
 							</div>
 							
 							<div class="form-group col-md-6">
 								<label>Descrizione <span class="text-danger">*</span></label>
-								<input type="text" name="descrizione" id="descrizione" class="form-control" placeholder="Inserire la descrizione" value="<%=articoloInPagina.getDescrizione()%>" required>
+								<input type="text" name="descrizione" id="descrizione" class="form-control" placeholder="Inserire la descrizione" value="<%=articoloInPagina.getDescrizione()%>">
 							</div>
 						</div>
 						
 						<div class="form-row">	
 							<div class="form-group col-md-6">
 								<label>Prezzo <span class="text-danger">*</span></label>
-								<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire prezzo" value="<%=articoloInPagina.getPrezzo()%>" required>
+								<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire prezzo" value="<%=articoloInPagina.getPrezzo()%>">
 							</div>
 							<div class="form-group col-md-3">
 								<label>Data di Arrivo<span class="text-danger">*</span></label>
                         		<input class="form-control" id="dataArrivo" type="date" placeholder="dd/MM/yy"
-                            		title="formato : gg/mm/aaaa"  name="dataArrivo" value="<%=articoloInPagina.getDataArrivo()%>" required>
+                            		title="<%=articoloInPagina.getDataArrivo()%>"  name="dataArrivo" value="<%=articoloInPagina.getDataArrivo()%>">
+							</div>
 							</div>
 							<div class="form-group col-md-3">
 								<input type="hidden" class="form-control" name="idArticolo" id="idArticolo" placeholder="ID ARTICOLO" value="<%=articoloInPagina.getId()%>"/>
