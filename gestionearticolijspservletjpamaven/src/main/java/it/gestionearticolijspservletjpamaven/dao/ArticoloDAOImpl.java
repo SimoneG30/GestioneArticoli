@@ -55,16 +55,17 @@ public class ArticoloDAOImpl implements ArticoloDAO {
 
         StringBuilder stringBuilder = new StringBuilder("");
         stringBuilder.append("select a from Articolo a where");
-        stringBuilder.append("( :codice is null OR a.codice like %:nome%) ");
-        stringBuilder.append("AND (:descrizione is null OR a.descrizione like %:descrizione%) ");
+        stringBuilder.append("( :codice is null OR a.codice like ('%' || :codice || '%'))");
+        stringBuilder.append("AND (:descrizione is null OR a.descrizione like ('%' || :descrizione || '%'))");
         stringBuilder.append("AND (:prezzo is null OR a.prezzo = :prezzo) ");
-        stringBuilder.append("AND (:dataarrivo is null OR a.dataarrivo = :dataarrivo) ");
+        stringBuilder.append("AND (:dataArrivo is null OR a.dataArrivo = :dataArrivo) ");
         TypedQuery<Articolo> typedQuery = entityManager.createQuery(stringBuilder.toString(), Articolo.class);
         typedQuery.setParameter("codice", input.getCodice());
         typedQuery.setParameter("descrizione", input.getDescrizione());
         typedQuery.setParameter("prezzo", input.getPrezzo());
-        typedQuery.setParameter("dataarrivo", input.getDataArrivo());
+        typedQuery.setParameter("dataArrivo", input.getDataArrivo());
         return typedQuery.getResultList();
 	}
+//	queryWhere.append("and descr LIKE ('%' || ? || '%')"); 
 
 }

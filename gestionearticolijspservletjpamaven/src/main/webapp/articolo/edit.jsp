@@ -29,30 +29,27 @@
 		        <h5>Modifica elemento</h5> 
 		    </div>
 		    <div class='card-body'>
-
-					<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
-
 					<form method="post" action="ExecuteUpdateArticoloServlet" novalidate="novalidate">
 					
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label>Codice <span class="text-danger">*</span></label>
+								<label>Codice</label>
 								<input type="text" name="codice" id="codice" class="form-control" placeholder="Inserire il codice" value="<%=articoloInPagina.getCodice()%>">
 							</div>
 							
 							<div class="form-group col-md-6">
-								<label>Descrizione <span class="text-danger">*</span></label>
+								<label>Descrizione</label>
 								<input type="text" name="descrizione" id="descrizione" class="form-control" placeholder="Inserire la descrizione" value="<%=articoloInPagina.getDescrizione()%>">
 							</div>
 						</div>
 						
 						<div class="form-row">	
 							<div class="form-group col-md-6">
-								<label>Prezzo <span class="text-danger">*</span></label>
+								<label>Prezzo</label>
 								<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire prezzo" value="<%=articoloInPagina.getPrezzo()%>">
 							</div>
 							<div class="form-group col-md-3">
-								<label>Data di Arrivo<span class="text-danger">*</span></label>
+								<label>Data di Arrivo</label>
                         		<input class="form-control" id="dataArrivo" type="date" placeholder="dd/MM/yy"
                             		title="<%=articoloInPagina.getDataArrivo()%>"  name="dataArrivo" value="<%=articoloInPagina.getDataArrivo()%>">
 							</div>

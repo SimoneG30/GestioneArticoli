@@ -25,7 +25,7 @@
 		    </div>
 		    <div class='card-body'>
 
-					<form method="post" action="ExecuteInsertArticoloServlet" novalidate="novalidate">
+					<form method="post" action="ExecuteSearchArticoloServlet" novalidate="novalidate">
 					
 						<div class="form-row">
 							<div class="form-group col-md-6">

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +35,6 @@ public class ExecuteSearchArticoloServlet extends HttpServlet {
 		String dataArrivoStringParam = request.getParameter("dataArrivo");
 		Date dataArrivoParsed = parseDateArrivoFromString(dataArrivoStringParam);
 
-
 		if (!this.validateInput(codiceInputParam, descrizioneInputParam, prezzoInputStringParam, dataArrivoStringParam)
 				&& dataArrivoParsed == null) {
 			request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
@@ -42,10 +42,19 @@ public class ExecuteSearchArticoloServlet extends HttpServlet {
 			return;
 		}
 
-		Articolo articoloInstance = new Articolo(codiceInputParam, descrizioneInputParam,
-				Integer.parseInt(prezzoInputStringParam), dataArrivoParsed);
 		try {
-			request.setAttribute("listaArticoliSearchAttribute", MyServiceFactory.getArticoloServiceInstance().findByExample(articoloInstance));
+			Articolo articoloInstance = new Articolo();
+			articoloInstance.setCodice(codiceInputParam);
+			articoloInstance.setDescrizione(descrizioneInputParam);
+			if(!prezzoInputStringParam.isEmpty()) {
+				Integer prezzoParsato = Integer.parseInt(prezzoInputStringParam);
+				articoloInstance.setPrezzo(prezzoParsato);
+			}
+			if(!dataArrivoStringParam.isEmpty()) {
+				articoloInstance.setDataArrivo(dataArrivoParsed);
+			}
+			List<Articolo> listaArticoli = MyServiceFactory.getArticoloServiceInstance().findByExample(articoloInstance);
+			request.setAttribute("listaArticoliAttribute", listaArticoli);
 			request.setAttribute("successMessage", "Operazione effettuata con successo");
 		} catch (Exception e) {
 			e.printStackTrace();
