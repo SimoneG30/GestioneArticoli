@@ -66,6 +66,4 @@ public class ArticoloDAOImpl implements ArticoloDAO {
         typedQuery.setParameter("dataArrivo", input.getDataArrivo());
         return typedQuery.getResultList();
 	}
-//	queryWhere.append("and descr LIKE ('%' || ? || '%')"); 
-
 }
